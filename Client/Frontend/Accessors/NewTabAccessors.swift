@@ -9,7 +9,7 @@ import XCGLogger
 /// Accessors to find what a new tab should do when created without a URL.
 struct NewTabAccessors {
     static let PrefKey = PrefsKeys.KeyNewTab
-    static let Default = NewTabPage.topSites
+    static let Default = NewTabPage.homePage
 
     static func getNewTabPage(_ prefs: Prefs) -> NewTabPage {
         guard let raw = prefs.stringForKey(PrefKey) else {
@@ -19,7 +19,7 @@ struct NewTabAccessors {
         // Check if the user has chosen to open a homepage, but no homepage is set,
         // then use the default.
         if option == .homePage && HomePageAccessors.getHomePage(prefs) == nil {
-            return Default
+            return NewTabPage.topSites
         }
         return option
     }

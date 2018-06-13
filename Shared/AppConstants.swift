@@ -27,13 +27,7 @@ public struct AppConstants {
 
     /// Build Channel.
     public static let BuildChannel: AppBuildChannel = {
-        #if MOZ_CHANNEL_RELEASE
             return AppBuildChannel.release
-        #elseif MOZ_CHANNEL_BETA
-            return AppBuildChannel.beta
-        #elseif MOZ_CHANNEL_FENNEC
-            return AppBuildChannel.developer
-        #endif
     }()
 
     public static let scheme: String = {
@@ -56,7 +50,7 @@ public struct AppConstants {
     /// Should we try to sync (no merging) the Mobile Folder (if shouldMergeBookmarks is false).
     public static let MOZ_SIMPLE_BOOKMARKS_SYNCING: Bool = {
         #if MOZ_CHANNEL_RELEASE
-            return true
+            return false
         #elseif MOZ_CHANNEL_BETA
             return true
         #elseif MOZ_CHANNEL_FENNEC
@@ -109,7 +103,7 @@ public struct AppConstants {
     /// Toggles the ability to add a custom search engine
     public static let MOZ_CUSTOM_SEARCH_ENGINE: Bool = {
         #if MOZ_CHANNEL_RELEASE
-            return true
+            return false
         #elseif MOZ_CHANNEL_BETA
             return true
         #elseif MOZ_CHANNEL_FENNEC

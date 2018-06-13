@@ -320,10 +320,19 @@ class HistoryPanel: SiteTableViewController, HomePanel {
 
         if indexPath.section == 0 {
             cell.imageView!.layer.borderWidth = 0
-            return indexPath.row == 0 ? configureRecentlyClosed(cell, for: indexPath) : configureSyncedTabs(cell, for: indexPath)
+            if (indexPath.row != 0) { cell.isHidden = true }
+            return configureRecentlyClosed(cell, for: indexPath)
+            // return indexPath.row == 0 ? configureRecentlyClosed(cell, for: indexPath) : configureSyncedTabs(cell, for: indexPath)
         } else {
             return configureSite(cell, for: indexPath)
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 && indexPath.row != 0 {
+            return 0
+        }
+        return super.tableView(tableView, heightForRowAt: indexPath)
     }
 
     func configureRecentlyClosed(_ cell: UITableViewCell, for indexPath: IndexPath) -> UITableViewCell {
@@ -379,7 +388,8 @@ class HistoryPanel: SiteTableViewController, HomePanel {
     func tableView(_ tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath) {
         if indexPath.section == 0 {
             self.tableView.deselectRow(at: indexPath, animated: true)
-            return indexPath.row == 0 ? self.showRecentlyClosed() : self.showSyncedTabs()
+            return self.showRecentlyClosed()
+            // return indexPath.row == 0 ? self.showRecentlyClosed() : self.showSyncedTabs()
         }
         if let site = self.siteForIndexPath(indexPath), let url = URL(string: site.url) {
             let visitType = VisitType.typed    // Means History, too.

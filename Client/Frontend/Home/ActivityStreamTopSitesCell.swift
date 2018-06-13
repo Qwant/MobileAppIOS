@@ -145,10 +145,14 @@ class TopSiteItemCell: UICollectionViewCell {
     func configureWithTopSiteItem(_ site: Site) {
         url = site.tileURL
 
-        if let provider = site.metadata?.providerName {
-            titleLabel.text = provider.lowercased()
+        if site.title.contains("Qwant") {
+            titleLabel.text = site.title
         } else {
-            titleLabel.text = site.tileURL.hostSLD
+            if let provider = site.metadata?.providerName {
+                titleLabel.text = provider.lowercased()
+            } else {
+                titleLabel.text = site.tileURL.hostSLD
+            }
         }
 
         // If its a pinned site add a bullet point to the front

@@ -33,13 +33,13 @@ class AppSettingsTableViewController: SettingsTableViewController {
         var settings = [SettingSection]()
 
         let privacyTitle = NSLocalizedString("Privacy", comment: "Privacy section title")
-        let accountDebugSettings = [
+        /* let accountDebugSettings = [
             // Debug settings:
             RequirePasswordDebugSetting(settings: self),
             RequireUpgradeDebugSetting(settings: self),
             ForgetSyncAuthStateDebugSetting(settings: self),
             StageSyncServiceDebugSetting(settings: self),
-        ]
+        ] */
 
         let prefs = profile.prefs
         var generalSettings: [Setting] = [
@@ -53,15 +53,6 @@ class AppSettingsTableViewController: SettingsTableViewController {
                         titleText: NSLocalizedString("Save Logins", comment: "Setting to enable the built-in password manager")),
             ]        
         
-        let accountChinaSyncSetting: [Setting]
-        if !profile.isChinaEdition {
-            accountChinaSyncSetting = []
-        } else {
-            accountChinaSyncSetting = [
-                // Show China sync service setting:
-                ChinaSyncServiceSetting(settings: self)
-            ]
-        }
         // There is nothing to show in the Customize section if we don't include the compact tab layout
         // setting on iPad. When more options are added that work on both device types, this logic can
         // be changed.
@@ -118,18 +109,18 @@ class AppSettingsTableViewController: SettingsTableViewController {
             SettingSection(title: NSAttributedString(string: privacyTitle), children: privacySettings),
             SettingSection(title: NSAttributedString(string: NSLocalizedString("Support", comment: "Support section title")), children: [
                 ShowIntroductionSetting(settings: self),
-                SendFeedbackSetting(),
-                SendAnonymousUsageDataSetting(prefs: prefs, delegate: settingsDelegate),
+                // SendFeedbackSetting(),
+                // SendAnonymousUsageDataSetting(prefs: prefs, delegate: settingsDelegate),
                 OpenSupportPageSetting(delegate: settingsDelegate),
             ]),
             SettingSection(title: NSAttributedString(string: NSLocalizedString("About", comment: "About settings section title")), children: [
                 VersionSetting(settings: self),
                 LicenseAndAcknowledgementsSetting(),
-                YourRightsSetting(),
-                ExportBrowserDataSetting(settings: self),
-                DeleteExportedDataSetting(settings: self),
-                EnableBookmarkMergingSetting(settings: self),
-                ForceCrashSetting(settings: self)
+                // YourRightsSetting(),
+                // ExportBrowserDataSetting(settings: self),
+                // DeleteExportedDataSetting(settings: self),
+                // EnableBookmarkMergingSetting(settings: self),
+                // ForceCrashSetting(settings: self)
             ])]
 
         return settings

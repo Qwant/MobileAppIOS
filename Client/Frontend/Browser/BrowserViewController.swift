@@ -552,7 +552,7 @@ class BrowserViewController: UIViewController {
 
         super.viewDidAppear(animated)
 
-        if shouldShowWhatsNewTab() {
+        /* if shouldShowWhatsNewTab() {
             // Only display if the SUMO topic has been configured in the Info.plist (present and not empty)
             if let whatsNewTopic = AppInfo.whatsNewTopic, whatsNewTopic != "" {
                 if let whatsNewURL = SupportUtils.URLForTopic(whatsNewTopic) {
@@ -560,7 +560,7 @@ class BrowserViewController: UIViewController {
                     profile.prefs.setString(AppInfo.appVersion, forKey: LatestAppVersionProfileKey)
                 }
             }
-        }
+        } */
 
         if let toast = self.pendingToast {
             self.pendingToast = nil
@@ -2301,10 +2301,10 @@ extension BrowserViewController: ReaderModeBarViewDelegate {
 
 extension BrowserViewController: IntroViewControllerDelegate {
     @discardableResult func presentIntroViewController(_ force: Bool = false, animated: Bool = true) -> Bool {
-        if let deeplink = self.profile.prefs.stringForKey("AdjustDeeplinkKey"), let url = URL(string: deeplink) {
+        /* if let deeplink = self.profile.prefs.stringForKey("AdjustDeeplinkKey"), let url = URL(string: deeplink) {
             self.launchFxAFromDeeplinkURL(url)
             return true
-        }
+        } */
         
         if force || profile.prefs.intForKey(PrefsKeys.IntroSeen) == nil {
             let introViewController = IntroViewController()

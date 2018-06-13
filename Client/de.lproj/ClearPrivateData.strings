@@ -1,0 +1,22 @@
+/* Settings item for clearing browsing history */
+"Browsing History" = "Besuchte Seiten";
+
+/* Settings item for clearing the cache */
+"Cache" = "Cache";
+
+/* Button in settings that clears private data for the selected items.
+   Navigation title in settings. */
+"Clear Private Data" = "Private Daten löschen";
+
+/* Settings item for clearing cookies */
+"Cookies" = "Cookies";
+
+/* Settings item for deleting downloaded files */
+"Downloaded Files" = "Heruntergeladene Dateien";
+
+/* Settings item for clearing website data */
+"Offline Website Data" = "Offline-Website-Daten";
+
+/* Settings item for clearing passwords and login data */
+"Saved Logins" = "Gespeicherte Zugangsdaten";
+

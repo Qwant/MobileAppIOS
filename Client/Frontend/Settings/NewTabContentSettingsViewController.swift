@@ -42,7 +42,7 @@ class NewTabContentSettingsViewController: SettingsTableViewController {
         let tabSetting = CurrentTabSetting(profile: profile)
         let firstSection = SettingSection(title: NSAttributedString(string: Strings.SettingsNewTabSectionName), footerTitle: nil, children: [tabSetting])
         
-        let isPocketEnabledDefault = Pocket.IslocaleSupported(Locale.current.identifier)
+        let isPocketEnabledDefault = false // Pocket.IslocaleSupported(Locale.current.identifier)
         let pocketSetting = BoolSetting(prefs: profile.prefs, prefKey: PrefsKeys.ASPocketStoriesVisible, defaultValue: isPocketEnabledDefault, attributedTitleText: NSAttributedString(string: Strings.SettingsNewTabPocket))
         let bookmarks = BoolSetting(prefs: profile.prefs, prefKey: PrefsKeys.ASBookmarkHighlightsVisible, defaultValue: true, attributedTitleText: NSAttributedString(string: Strings.SettingsNewTabHighlightsBookmarks))
         let history = BoolSetting(prefs: profile.prefs, prefKey: PrefsKeys.ASRecentHighlightsVisible, defaultValue: true, attributedTitleText: NSAttributedString(string: Strings.SettingsNewTabHiglightsHistory))
